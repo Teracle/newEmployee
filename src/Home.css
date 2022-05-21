@@ -1,0 +1,143 @@
+.App{
+  margin-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  padding: 8px;
+  text-align: left;
+  padding-left: 20px;
+  height: 50px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #d2d1d1;
+  color: rgb(0, 0, 0); 
+}
+
+.profile-icon{
+  padding-right:10px;
+}
+
+.row-profile{
+  display: flex;
+  align-items: center;
+}
+
+img:not(.profile-icon){
+  cursor: pointer;
+}
+
+.edit{
+  border: 1px solid rgb(237, 109, 17);
+  background-color: rgb(250, 218, 8);
+  border-radius: 5px;
+  border-right: none;
+  margin-right: 10px;
+}
+
+
+.remove{
+  border: 1px solid rgb(206, 38, 8);
+  background-color: rgb(231, 94, 70);
+  border-radius: 5px;
+  border-left: none;
+}
+
+.addEmployee{
+  cursor: pointer;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 1px;
+  gap: 10px;
+  width: 191px;
+  height: 46px;
+  background: #2979FF;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.addEmployee-header{
+  height: 50px;
+  background-color: #5d5d5d;
+  width: 100%;
+  color:#FFFFFF;
+  padding-left: 2px;
+}
+
+.addEmployee-header h3{
+  padding-left: 10px;
+  display: flex;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.addEmployee-window{
+  border-radius: 6px;
+  max-width: 500px;
+  height: 300px;
+  border: 2px solid grey;
+  margin: 150px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input{
+  width: 80%;
+}
+
+input{
+  margin-bottom: 10px;
+  outline: none;
+  height: 25px;
+  font-size: 17px;
+}
+
+input::placeholder{
+  color: #818181;
+}
+
+
+button{
+  margin-left: 325px ;
+  width: 90px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2979FF;
+  color:#FFFFFF;
+  cursor: pointer;
+  transition: transform .2s ease-in, box-shadow .2s ease-in;
+}
+
+button:active{
+  transform: scale(0.85);
+  box-shadow: 3px 2px 25px 1px rgba(0,0,0,0.25);
+}
+
+.back{
+  margin-right: 300px;
+}
+
+.ID{
+  display: none;
+}
