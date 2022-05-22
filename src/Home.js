@@ -1,15 +1,11 @@
-
 import './Home.css';
 import React, { useState,useEffect } from "react";
 import Modal from 'react-modal';
 import Notifications, {notify} from 'react-notify-toast';
-// import useMediaQuery from '@mui/material/useMediaQuery';
 
 // Google icon
 <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 // Google icon
-
-let uuid = require('uuid');
 
 const { 
   v1: uuidv1,
@@ -28,7 +24,7 @@ function App() {
   const [lastName, setLastName] = useState("");
   const [id,setID]=useState('');
 
-  // const isDesktop = useMediaQuery('(min-width: 420px)');
+
 
   const AddModal =()=>{
     AddEmployeemodalIsOpen(true);
@@ -64,10 +60,10 @@ function App() {
     if(firstName!=='' && lastName!==''){
       AddEmployeemodalIsOpen(false);
       EditEmployeemodalIsOpen(false);
-      const id=uuidv1();
-    
+      let id=uuidv1();
+      
       const newID = {"firstname": firstName, "lastname": lastName,"id":id};    
-      setEditFirstName(firstName)
+      setEditFirstName(firstName);
       setEditFirstName2(lastName);
       
       fetch('http://localhost:3005/persons', {  
@@ -77,15 +73,15 @@ function App() {
       body: JSON.stringify(newID),
       headers: {
         'Content-Type': 'application/json'
-    }
+      }
 
-    })
-    .then(()=>{
-      getData();
-    })
-    .catch(()=>{
-      alert('Unable to add employee');
-    })
+      })
+      .then(()=>{
+        getData();
+      })
+      .catch(()=>{
+        alert('Unable to add employee');
+      })
 
     setFirstName("");
     setLastName("");
@@ -96,17 +92,13 @@ function App() {
   
   else if(firstName==='' && lastName!==''){
     notify.show('Укажите Имя сотрудника',"error",3000,"red");
-
   }
   else if(lastName==='' && firstName!==''){
     notify.show('Укажите Фамилию сотрудника',"error",3000,"red");
   }
-  else{
-   
+  else{ 
     notify.show('Укажите имя и фамилию сотрудника',"error",3000,"red");
   }
-
-  
   
   }
 
@@ -124,17 +116,16 @@ function App() {
         console.log(res)
         fetchUsers(res)
       })
-  }
+    }
 
-  useEffect(() => {
-    getData()
-  }, [])
+    useEffect(() => {
+      getData()
+    }, [])
 
 
 
   const SavedAndCloseEditModal=(e)=>{
    
-
     if(firstName!=='' && lastName!==''){
     const newData={"firstname":editFirstName,"lastname":editFirstName2};
     EditEmployeemodalIsOpen(false);
@@ -160,19 +151,16 @@ function App() {
       console.log('Couldn\t edit employee');
     })
 
-
     notify.show('Сотрудник успешно отредактирован',"success",3000,"green");
   }
 
   else if(firstName==='' && lastName!==''){
     notify.show('Укажите Имя сотрудника',"error",3000,"red");
-
   }
   else if(lastName==='' && firstName!==''){
     notify.show('Укажите Фамилию сотрудника',"error",3000,"red");
   }
   else{
-   
     notify.show('Укажите имя и фамилию сотрудника',"error",3000,"red");
   }
 
@@ -183,7 +171,6 @@ function App() {
     setFirstName(e.currentTarget.querySelector('.row-profile').textContent);
     setLastName(e.currentTarget.querySelector('.editLastName').textContent)
     setID(e.currentTarget.querySelector('.ID').textContent);
-    
 }
 
 
@@ -195,15 +182,15 @@ const DeleteEmployeeModal=(e)=>{
     method: 'DELETE', 
     headers: {
       'Content-Type': 'application/json'
-  }
-  })
+    }
+    })
 
-.then(()=>{
-  getData();
-})
-.catch((e)=>{
-  console.log('No employee with that ID');
-})
+    .then(()=>{
+      getData();
+    })
+    .catch((e)=>{
+      console.log('No employee with that ID');
+    })
 
   setFirstName("");
   setLastName("");
@@ -214,7 +201,6 @@ const DeleteEmployeeModal=(e)=>{
 
   return (
     <div className="App">
-     
     
      <Notifications />
 
@@ -233,13 +219,12 @@ const DeleteEmployeeModal=(e)=>{
                 return(
                     <tr onClick={getValue}>
                       
-                      <td className="row-profile"><img className="profile-icon" src="https://img.icons8.com/small/32/000000/user-male-circle.png"/> {item.firstname}</td>
+                      <td className="row-profile"><img className="profile-icon" src="https://img.icons8.com/small/32/000000/user-male-circle.png" alt="profile"/> {item.firstname}</td>
                       <td className='editLastName'>{item.lastname}</td>
                       <td className='ID'>{item.id}</td>
-                      
-                      <td><img onClick={EditModal} className="edit" src="https://img.icons8.com/small/32/000000/edit.png"/><img onClick={DeleteModal} className="remove" src="https://img.icons8.com/small/32/000000/delete-sign.png"/></td>
+                      <td><img onClick={EditModal} className="edit" src="https://img.icons8.com/small/32/000000/edit.png" alt="edit"/><img onClick={DeleteModal} className="remove" src="https://img.icons8.com/small/32/000000/delete-sign.png" alt="remove"/></td>
                   
-                  </tr>
+                    </tr>
                     )
                   
                 })}
@@ -252,7 +237,7 @@ const DeleteEmployeeModal=(e)=>{
           </div>
 
             <p className='back' style={{color:"blue", textDecoration:'underline blue',cursor:'pointer'}} onClick={closeModal}>Назад к списку</p>
-              <input onChange={handleName} placeholder="Введите имя сотрудника"/>
+              <input autoFocus onChange={handleName} placeholder="Введите имя сотрудника"/>
               <input onChange={handleSurname} placeholder="Введите фамилию сотрудника"/>
               <button type="submit" onClick={SaveAndCloseModal}>Сохранить</button>
                 
@@ -266,11 +251,9 @@ const DeleteEmployeeModal=(e)=>{
           </div>
 
         <p className='back' style={{color:"blue", textDecoration:'underline blue',cursor:'pointer'}} onClick={closeModal}>Назад к списку</p>
-        
-        
         <input onChange={handleName} value={firstName} />
-          <input onChange={handleSurname} value={lastName} />
-            <button onClick={SavedAndCloseEditModal}>Сохранить</button>
+        <input onChange={handleSurname} value={lastName} />
+        <button onClick={SavedAndCloseEditModal}>Сохранить</button>
                 
           </div>
         </Modal>
@@ -282,21 +265,18 @@ const DeleteEmployeeModal=(e)=>{
           </div>
 
         <p className='back' style={{color:"blue", textDecoration:'underline blue',cursor:'pointer'}} onClick={closeModal}>Назад к списку</p>
-        
 
-          <p>Имя:<b>{firstName}</b></p>
-          <p>Фамилия:<b>{lastName}</b></p>
-            <button onClick={DeleteEmployeeModal}>Удалить</button>
+          <b>{firstName} {lastName}</b>
+          <button onClick={DeleteEmployeeModal}>Удалить</button>
                 
           </div>
         </Modal>
-
 
       <div>
         
       </div>
 
-        <div className="addEmployee" onClick={AddModal}>Добавить сотрудника</div>
+      <div className="addEmployee" onClick={AddModal}>Добавить сотрудника</div>
               
       </div>
 
