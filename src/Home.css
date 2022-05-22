@@ -8,6 +8,7 @@
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  border-bottom: 1px solid rgba(0,0,0,0.25);
 }
 
 #customers td, #customers th {
@@ -114,11 +115,16 @@ input{
 
 input::placeholder{
   color: #818181;
+  
 }
 
+input::-ms-value{
+  margin: 0;
+  padding: 0;
+}
 
 button{
-  margin-left: 325px ;
+  margin-top: 15px;
   width: 90px;
   height: 30px;
   border-radius: 5px;
@@ -135,9 +141,17 @@ button:active{
 }
 
 .back{
-  margin-right: 300px;
+  text-align: center;
 }
 
 .ID{
   display: none;
+}
+
+@media (max-width:440px) {
+  input::placeholder{
+    font-size: 14px;
+  }
+
+  
 }

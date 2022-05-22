@@ -1,3 +1,9 @@
 {
-  "persons": []
+  "persons": [
+    {
+      "firstname": "Игорь",
+      "lastname": "Лаарен",
+      "id": "866d5870-d98a-11ec-b7d5-f95430dc3bee"
+    }
+  ]
 }
