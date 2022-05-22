@@ -1,5 +1,8 @@
 #Запустить json server:
 
+1. Перейти в папку src -> **cd src**
+
+2. Запустить сервер командой
 json-server --watch db.json --port 3005
 
 
