@@ -1,17 +1,17 @@
 
-#Запустить json server:
+**Запустить json server:**
 
 1. Перейти в папку newEmployee/src
 
 2. Запустить сервер командой
 json-server --watch db.json --port 3005
 
-#запустить приложение:
+**запустить приложение:**
 
 Открыть новый терминал, перейти в newEmployee/src и ввести команду:
 npm start
 
-Соглашение по оформлению:
+**Соглашение по оформлению:**
 Google JavaScript Style Guide
 
 # Getting Started with Create React App
